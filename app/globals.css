@@ -1,26 +1,136 @@
 @import "tailwindcss";
 
+/* -----------------------------
+   Base theme
+----------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #141612;          /* deep olive charcoal */
+  --fg: #f5f3ef;          /* warm cream */
+  --muted: #9a958a;       /* muted sand */
+  --green: #6b8e23;       /* agri green */
+  --amber: #d4a84b;       /* warm sand/amber */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans), system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* -----------------------------
+   Grain overlay (optional utility)
+----------------------------- */
+.grain,
+.grain-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* -----------------------------
+   Soft floating blobs
+----------------------------- */
+@keyframes floaty {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(10px, -12px, 0) scale(1.03); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+.floaty {
+  animation: floaty 10s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .floaty { animation: none !important; }
+}
+
+/* -----------------------------
+   SAQR Header (premium)
+----------------------------- */
+.saqr-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(20, 22, 18, 0.72);
+  backdrop-filter: blur(10px);
+}
+
+.saqr-headerGlow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(700px 150px at 15% 0%, rgba(107, 142, 35, 0.18), transparent 60%),
+    radial-gradient(700px 150px at 85% 0%, rgba(212, 168, 75, 0.12), transparent 60%);
+  opacity: 0.9;
+}
+
+/* Moroccan zellige squares behind navbar */
+.saqr-zellige {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.10;
+  background-image:
+    linear-gradient(rgba(212, 168, 75, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 168, 75, 0.12) 1px, transparent 1px),
+    radial-gradient(circle at 1px 1px, rgba(107, 142, 35, 0.16) 1px, transparent 0);
+  background-size: 44px 44px, 44px 44px, 22px 22px;
+  background-position: center;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0.85), rgba(0,0,0,0));
+}
+
+/* Nav links: remove rectangles, add premium underline */
+.saqr-navlink {
+  position: relative;
+  color: rgba(245, 243, 239, 0.70);
+  letter-spacing: 0.02em;
+  transition: color 220ms ease;
+  padding: 8px 2px;
+  cursor: pointer;
+}
+
+.saqr-navlink:hover {
+  color: rgba(245, 243, 239, 1);
+}
+
+.saqr-navlink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(107,142,35,0.0), rgba(107,142,35,0.65), rgba(212,168,75,0.55), rgba(212,168,75,0.0));
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 240ms ease;
+  opacity: 0.9;
+}
+
+.saqr-navlink:hover::after {
+  transform: scaleX(1);
+}
+
+/* -----------------------------
+   Optional “card border” utility (if you use it)
+----------------------------- */
+.card-border {
+  border: 1px solid rgba(212, 168, 75, 0.15);
+  border-radius: 12px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.card-border:hover {
+  border-color: rgba(107, 142, 35, 0.3);
+  box-shadow: 0 0 30px rgba(107, 142, 35, 0.12);
 }
