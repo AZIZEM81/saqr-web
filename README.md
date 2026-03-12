@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SAQR Platform
 
-## Getting Started
+Precision Agriculture Simulation Platform  
+Engineered in Morocco — Built for Arid & Semi-Arid Farming Environments
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🌍 Overview
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+SAQR is a modular, web-based drone simulation and training platform designed for precision agriculture.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The system combines:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 🛰️ Drone Simulation (Unity WebGL planned)
+- 📊 Impact Dashboard
+- 🧠 Operator Training Metrics
+- 🌐 Scalable Web Architecture
 
-## Learn More
+SAQR is not a game — it is a simulation-first agricultural training and mission planning platform.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚀 Core Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 1️⃣ Dashboard
+- KPI metrics (training hours, missions, efficiency)
+- Animated performance indicators
+- Ready for backend data integration
+- Modular component-based UI
 
-## Deploy on Vercel
+### 2️⃣ Simulator
+- Unity WebGL integration-ready
+- Training missions
+- Waypoint planning
+- Wind condition modeling
+- Spray optimization scenarios
+- Operator-safe environment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 3️⃣ Technology Section
+- 3D drone visualization (React Three Fiber)
+- Cursor-reactive drone interaction
+- Simulation-focused UI design
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🏗 Architecture
+
+### Frontend
+- Next.js (App Router)
+- TypeScript
+- TailwindCSS
+- React Three Fiber (3D visualization)
+- Modular component structure
